@@ -1,0 +1,28 @@
+
+{% extends "base.html" %}
+{% block content %}
+<h2>Sign In</h2>
+<form method="POST">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div style="background-color: red;color: white;" class="{{ category }}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+    <label for="email">Email:</label>
+    <input type="email" name="email" required>
+    <label for="password">Password:</label>
+    <input type="password" name="password" required>
+    <button type="submit">Sign In</button>
+</form>
+<p><a href="{{ url_for('sign_up') }}">Don't have an account? Sign Up</a></p>
+{% endblock %}
+<!-- 
+
+To view users in the database 
+
+-> sqlite3 users.db
+-> ".tables" to view user table
+-> select * from user to view user database
+-->
